@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 750634303099228438}
   - component: {fileID: 750634303099228432}
   - component: {fileID: 750634303099228433}
-  - component: {fileID: 8591826798422781626}
+  - component: {fileID: 7668477316448934381}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: BULLET
@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750634303099228437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.492, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 750634302610701395}
@@ -78,7 +78,7 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!96 &8591826798422781626
+--- !u!96 &7668477316448934381
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -118,7 +118,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 5
+  m_Time: 7
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -127,7 +127,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.18571281
+        value: 0.11268234
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -135,8 +135,8 @@ TrailRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.15555386
-        value: 0.48571444
+        time: 0.09876637
+        value: 0.48591453
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -144,8 +144,8 @@ TrailRenderer:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.9999946
-        value: 0.12857056
+        time: 0.99075055
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -190,7 +190,7 @@ TrailRenderer:
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
-  m_MinVertexDistance: 0.1
+  m_MinVertexDistance: 0.26
   m_Autodestruct: 0
   m_Emitting: 1
 --- !u!1001 &750634302610564819

@@ -23,6 +23,7 @@ public class RemoveBullet : MonoBehaviour
         //충돌지점의 각도 가져오기
         Quaternion rot = Quaternion.FromToRotation(-Vector3.forward, contact.normal);
 
-        Instantiate(sparkEffect, contact.point, rot);
+        GameObject spark= Instantiate(sparkEffect, contact.point+(-contact.normal*0.05f), rot);
+        spark.transform.SetParent(this.transform);//부모객체로 설정
     }
 }
