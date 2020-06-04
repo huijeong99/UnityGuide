@@ -6,11 +6,13 @@ public class FireCtrl : MonoBehaviour
 {
     public GameObject bullet;
     public Transform firePos;
+    public ParticleSystem Cartridge;
+    private ParticleSystem MuzzleFlash;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        MuzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
     }
 
     // Update is called once per frame
@@ -25,5 +27,7 @@ public class FireCtrl : MonoBehaviour
     private void Fire()
     {
         Instantiate(bullet, firePos.position, firePos.rotation);
+        Cartridge.Play();
+        MuzzleFlash.Play();
     }
 }
