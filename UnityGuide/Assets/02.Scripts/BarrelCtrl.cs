@@ -13,8 +13,10 @@ public class BarrelCtrl : MonoBehaviour
     private Rigidbody rb;
     private MeshFilter meshFiler;
     private MeshRenderer _renderer;
+    private AudioSource _audio;
 
     public float expRadius = 10.0f;//폭발반경
+    public AudioClip expSfx;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +27,8 @@ public class BarrelCtrl : MonoBehaviour
         _renderer = GetComponent<MeshRenderer>();
         //난수를 발생시켜 불규칙한 텍스처 적용
         _renderer.material.mainTexture = textures[Random.Range(0, textures.Length)];
+
+        _audio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -53,6 +57,9 @@ public class BarrelCtrl : MonoBehaviour
         int idx = Random.Range(0, meshes.Length);
         meshFiler.sharedMesh = meshes[idx];
         GetComponent<MeshCollider>().sharedMesh = meshes[idx];
+
+        //폭발음 발생
+        _audio.PlayOneShot(expSfx, 1.0f);
     }
 
     void IndirectDamage(Vector3 pos)
