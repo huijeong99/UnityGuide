@@ -62,12 +62,14 @@ public class Damage : MonoBehaviour
     {
         OnPlayerDie();
 
-        Debug.Log("PlayerDie !");
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-        
-        for(int i = 0; i < enemies.Length; i++) {
-            enemies[i].SendMessage("OnPlayerDie", SendMessageOptions.DontRequireReceiver);
-        }
+        GameMgr.instance.isGameOver = true;
+
+        //Debug.Log("PlayerDie !");
+        //GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+        //
+        //for(int i = 0; i < enemies.Length; i++) {
+        //    enemies[i].SendMessage("OnPlayerDie", SendMessageOptions.DontRequireReceiver);
+        //}
     }
 
     private void DisplayHpbar()

@@ -19,7 +19,8 @@ public class EnemyDamage : MonoBehaviour
         if (collision.collider.tag == bulletTag)
         {
             ShowBloodEffect(collision);
-            Destroy(collision.gameObject);
+            //Destroy(collision.gameObject);
+            collision.gameObject.SetActive(false);
             hp -= collision.gameObject.GetComponent<BulletCtrl>().damage;
             if (hp<=0.0f){
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;

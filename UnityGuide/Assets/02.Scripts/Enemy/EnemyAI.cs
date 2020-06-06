@@ -122,6 +122,8 @@ public class EnemyAI : MonoBehaviour
                         enemyFire.isFire = true;
                     break;
                 case State.DIE:
+                    this.gameObject.tag = "Untagged";
+
                     isDie = true;
                     enemyFire.isFire = false;
 
