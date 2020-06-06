@@ -68,6 +68,7 @@ public class MoveAgent : MonoBehaviour
             group.GetComponentsInChildren<Transform>(wayPoints);
             wayPoints.RemoveAt(0);
 
+            nextIndex = Random.Range(0, wayPoints.Count);
         }
         
         MoveWayPoint();
@@ -107,7 +108,8 @@ public class MoveAgent : MonoBehaviour
 
         if (agent.velocity.sqrMagnitude >= 0.2f * 0.2f && agent.remainingDistance <= 0.5f)
         {
-            nextIndex = ++nextIndex % wayPoints.Count;
+            //nextIndex = ++nextIndex % wayPoints.Count;
+            nextIndex = Random.Range(0, wayPoints.Count);
             MoveWayPoint();
         }
     }

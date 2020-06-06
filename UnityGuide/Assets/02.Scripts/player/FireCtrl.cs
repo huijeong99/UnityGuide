@@ -28,11 +28,14 @@ public class FireCtrl : MonoBehaviour
     public Transform firePos;
     public PlayerSfx playerSfx;
 
+    private Shake shake;
+
     // Start is called before the first frame update
     void Start()
     {
         MuzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
         _audio = GetComponent<AudioSource>();
+        shake = GameObject.Find("CameraRig").GetComponent<Shake>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class FireCtrl : MonoBehaviour
 
     private void Fire()
     {
+        StartCoroutine(shake.ShakeCamera());
         Instantiate(bullet, firePos.position, firePos.rotation);
         Cartridge.Play();
         MuzzleFlash.Play();
