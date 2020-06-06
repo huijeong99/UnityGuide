@@ -28,11 +28,14 @@ public class EnemyAI : MonoBehaviour
 
     private WaitForSeconds ws;
     private MoveAgent moveAgent;
+    private EnemyFire enemyFire;
 
     private readonly int hashMove = Animator.StringToHash("IsMove");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
+    private readonly int hashDie = Animator.StringToHash("Die");
+    private readonly int hashDieIdx = Animator.StringToHash("DieIdx");
+    
 
-    //여기까지 수정함
     private void Awake()
     {
         var player = GameObject.FindGameObjectWithTag("PLAYER");
@@ -40,7 +43,10 @@ public class EnemyAI : MonoBehaviour
         
         playerTr = player.GetComponent<Transform>();
         enemyTr = GetComponent<Transform>();
+        animator = GetComponent<Animator>();
         moveAgent = GetComponent<MoveAgent>();
+        enemyFire = GetComponent<EnemyFire>();
+
         ws=new WaitForSeconds(0.3f);
     }
 
@@ -86,18 +92,39 @@ public class EnemyAI : MonoBehaviour
             switch (state)
             {
                 case State.PATROL:
+                    enemyFire.isFire = false;
                     moveAgent.patrolling = true;
+                    animator.SetBool(hashMove, true);
                     break;
                 case State.TRACE:
+                    enemyFire.isFire = false;
                     moveAgent.traceTarget = playerTr.position;
+                    animator.SetBool(hashMove, true);
                     break;
                 case State.ATTACK:
                     moveAgent.Stop();
+                    animator.SetBool(hashMove, false);
+
+                    if (enemyFire.isFire == false)
+                        enemyFire.isFire = true;
                     break;
                 case State.DIE:
+                    isDie = true;
+                    enemyFire.isFire = false;
+
                     moveAgent.Stop();
+
+                    animator.SetInteger(hashDieIdx, Random.Range(0, 3));
+                    animator.SetTrigger(hashDie);
+
+                    GetComponent<CapsuleCollider>().enabled = false;
                     break;
             }
         }
+    }
+
+    private void Update()
+    {
+        animator.SetFloat(hashSpeed, moveAgent.speed);
     }
 }
