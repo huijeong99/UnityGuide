@@ -1,7 +1,8 @@
 {
     "name": "EnemyAD",
     "references": [
-        "GUID:6d2c46d1d9ebc8a4fabfc5f1594a58a6"
+        "GUID:6d2c46d1d9ebc8a4fabfc5f1594a58a6",
+        "GUID:1684d6c49c6235746b87275155eb2f24"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

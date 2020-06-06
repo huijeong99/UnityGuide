@@ -26,6 +26,17 @@ public class playerCtrl : MonoBehaviour
     public PlayerAnim playerAni;
     public Animation anime;
 
+    private void OnEnable()
+    {
+        GameMgr.OnItemChange += updateSetup;
+    }
+
+    void updateSetup()
+    {
+
+        moveSpeed = GameMgr.instance.gameData.speed;
+            }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +45,8 @@ public class playerCtrl : MonoBehaviour
         anime = GetComponent<Animation>();
         anime.clip = playerAni.idle;
         anime.Play();
+
+        moveSpeed = GameMgr.instance.gameData.speed;
     }
 
     // Update is called once per frame

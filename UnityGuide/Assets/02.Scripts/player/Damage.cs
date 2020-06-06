@@ -22,9 +22,21 @@ public class Damage : MonoBehaviour
     public delegate void PlayerDieHandler();
     public static event PlayerDieHandler OnPlayerDie;
 
+    private void OnEnable()
+    {
+        GameMgr.OnItemChange += UpdateSetUp;
+    }
+
+    void UpdateSetUp()
+    {
+        initHP = GameMgr.instance.gameData.hp;
+        currHP += GameMgr.instance.gameData.hp - currHP;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        initHP = GameMgr.instance.gameData.hp;
         currHP = initHP;
 
         hpBar.color = initColor;

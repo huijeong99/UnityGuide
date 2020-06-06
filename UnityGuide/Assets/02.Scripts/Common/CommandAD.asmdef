@@ -1,3 +1,15 @@
-﻿{
-	"name": "CommandAD"
+{
+    "name": "CommandAD",
+    "references": [
+        "GUID:6d0d2c533ed8f3346aceecf1059f24a9"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

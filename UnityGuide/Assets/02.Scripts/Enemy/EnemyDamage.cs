@@ -47,6 +47,8 @@ public class EnemyDamage : MonoBehaviour
             if (hp<=0.0f){
                 GetComponent<EnemyAI>().state = EnemyAI.State.DIE;
                 hpBarImage.GetComponentsInParent<Image>()[1].color = Color.clear;
+                GameMgr.instance.IncKillCount();
+                GetComponent<CapsuleCollider>().enabled = false;
             }
         }
     }
