@@ -29,6 +29,7 @@ public class EnemyAI : MonoBehaviour
     private WaitForSeconds ws;
     private MoveAgent moveAgent;
     private EnemyFire enemyFire;
+    private EnemyFOV enemyFOV;
 
     private readonly int hashMove = Animator.StringToHash("IsMove");
     private readonly int hashSpeed = Animator.StringToHash("Speed");
@@ -49,6 +50,7 @@ public class EnemyAI : MonoBehaviour
         animator = GetComponent<Animator>();
         moveAgent = GetComponent<MoveAgent>();
         enemyFire = GetComponent<EnemyFire>();
+        enemyFOV = GetComponent<EnemyFOV>();
 
         ws=new WaitForSeconds(0.3f);
 
@@ -72,6 +74,9 @@ public class EnemyAI : MonoBehaviour
 
     IEnumerator CheckState()
     {
+
+        yield return new WaitForSeconds(1.0f);
+
         while (!isDie)
         {
             if (state == State.DIE) yield break;
@@ -80,10 +85,15 @@ public class EnemyAI : MonoBehaviour
 
             if (dist <= attackDist)
             {
-                state = State.ATTACK;
+                if (enemyFOV.isViewPlayer())
+                {
+                    state = State.ATTACK;
+                }
+                else
+                    state = State.TRACE;
             }
 
-            else if (dist <= traceDist)
+            else if (enemyFOV.isTracePlayer())
             {
                 state = State.TRACE;
             }

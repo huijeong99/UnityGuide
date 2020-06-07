@@ -1,0 +1,15 @@
+{
+    "name": "EditerDL",
+    "references": [
+        "GUID:ad0e4a751b0cfb64eb4b7e16258c1f00"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
