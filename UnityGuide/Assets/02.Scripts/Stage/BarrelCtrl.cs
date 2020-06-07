@@ -23,7 +23,7 @@ public class BarrelCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        //rb = GetComponent<Rigidbody>();
         meshFiler = GetComponent<MeshFilter>();
         //meshrenderer컴포넌트 추출
         _renderer = GetComponent<MeshRenderer>();
@@ -32,6 +32,16 @@ public class BarrelCtrl : MonoBehaviour
 
         _audio = GetComponent<AudioSource>();
 
+        //shake = GameObject.Find("CameraRig").GetComponent<Shake>();
+        StartCoroutine(GetShake());
+    }
+
+    IEnumerator GetShake()
+    {
+        while (!UnityEngine.SceneManagement.SceneManager.GetSceneByName("Play").isLoaded)
+        {
+            yield return null;
+        }
         shake = GameObject.Find("CameraRig").GetComponent<Shake>();
     }
 
