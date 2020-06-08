@@ -54,6 +54,9 @@ public class FireCtrl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        magazineImg.fillAmount = 1.0f;
+        UpdateBulletText();
+
         MuzzleFlash = firePos.GetComponentInChildren<ParticleSystem>();
         _audio = GetComponent<AudioSource>();
         shake = GameObject.Find("CameraRig").GetComponent<Shake>();
@@ -67,7 +70,6 @@ public class FireCtrl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Debug.DrawRay(firePos.position, firePos.forward * 20.0f, Color.green);
 
         if (EventSystem.current.IsPointerOverGameObject()) return;
@@ -75,8 +77,10 @@ public class FireCtrl : MonoBehaviour
         RaycastHit hit;
 
         if (Physics.Raycast(firePos.position, firePos.forward, out hit, 20.0f, layerMask))
+        //if (Physics.Raycast(firePos.position, firePos.forward, out hit, 20.0f, 1<<enemyLayer))
         {
             isFire = (hit.collider.CompareTag("ENEMY"));
+            //isFire = true;
         }
         else
         {
